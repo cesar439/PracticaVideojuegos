@@ -1,37 +1,37 @@
 public class Main {
         public static void main(String[] args) {
 
-                // 1. Creamos la primera tarea
-                Tarea tarea1 = new Tarea();
-                tarea1.titulo = "Diseñar base de datos";
-                tarea1.responsable = "César";
-                tarea1.horasEstimadas = 5.5;
-                tarea1.completada = false;
+                // 1. Creación del sensor de temperatura
+                Sensor sensorTemp = new Sensor();
+                sensorTemp.nombre = "Sensor DHT11";
+                sensorTemp.tipo = "Temperatura";
+                sensorTemp.lectura = 22.5;
+                sensorTemp.unidad = "°C";
 
-                // 2. Creamos la segunda tarea
-                Tarea tarea2 = new Tarea();
-                tarea2.titulo = "Programar API";
-                tarea2.responsable = "Cris";
-                tarea2.horasEstimadas = 8.0;
-                tarea2.completada = false;
+                // 2. Creación del sensor de presión
+                Sensor sensorPresion = new Sensor();
+                sensorPresion.nombre = "Sensor BMP280";
+                sensorPresion.tipo = "Presión";
+                sensorPresion.lectura = 1013.25;
+                sensorPresion.unidad = "hPa";
 
-                // 3. Creamos la tercera tarea
-                Tarea tarea3 = new Tarea();
-                tarea3.titulo = "Pruebas de seguridad";
-                tarea3.responsable = "Bruno";
-                tarea3.horasEstimadas = 4.0;
-                tarea3.completada = false;
+                // 3. Creación del sensor de humedad
+                Sensor sensorHumedad = new Sensor();
+                sensorHumedad.nombre = "Sensor HR202";
+                sensorHumedad.tipo = "Humedad";
+                sensorHumedad.lectura = 45.0;
+                sensorHumedad.unidad = "%";
 
-                // --- PRUEBA DE INDEPENDENCIA ---
-                // Completamos SOLAMENTE la tarea 1
-                tarea1.completar();
+                // --- PRUEBA DE MÉTODOS ---
+                // Actualizamos la lectura de un solo sensor
+                sensorTemp.actualizarLectura(25.8);
                 System.out.println("\n");
 
-                // Comprobamos los resultados para ver que las demás no se afectaron
-                tarea1.mostrarInformacion();
+                // Comprobamos la información
+                sensorTemp.mostrarInformacion();
 
                 System.out.println("\n-------------------\n");
 
-                tarea2.mostrarInformacion();
+                sensorPresion.mostrarInformacion();
         }
 }
