@@ -1,38 +1,40 @@
 public class Main {
         public static void main(String[] args) {
 
-                // 1. Creamos el primer actuador
-                Actuador actuador1 = new Actuador();
-                actuador1.codigo = "ACT-VALVULA-01";
-                actuador1.tipo = "Neumático";
-                actuador1.posicion = 0.0;
-                actuador1.activo = false;
+                // static inicial
+                System.out.println("Total inicial: " + Dispositivo.getTotalCreados());
 
-                // 2. Creamos el segundo actuador
-                Actuador actuador2 = new Actuador();
-                actuador2.codigo = "ACT-BRAZO-02";
-                actuador2.tipo = "Hidráulico";
-                actuador2.posicion = 15.5;
-                actuador2.activo = false;
+                // creacion vacia (Ejercicio 2)
+                Dispositivo d1 = new Dispositivo();
 
-                // 3. Creamos el tercer actuador
-                Actuador actuador3 = new Actuador();
-                actuador3.codigo = "ACT-MOTOR-03";
-                actuador3.tipo = "Eléctrico";
-                actuador3.posicion = 90.0;
-                actuador3.activo = false;
+                // set
+                d1.setNombre("Laptop Gamer");
+                d1.setTipo("Computadora");
+                d1.setActivo(false);
 
-                // --- PRUEBA DE INDEPENDENCIA ---
-                // Activamos y cambiamos la posición SOLO del primer actuador
-                actuador1.activar();
-                actuador1.cambiarPosicion(45.5);
-                System.out.println("\n");
+                // creacion con parametros (Ejercicio 3)
+                Dispositivo d2 = new Dispositivo("Servidor Web", "Servidor");
 
-                // Comprobamos los resultados
-                actuador1.mostrarInformacion();
+                // get
+                System.out.println("\n--- Datos ---");
+                System.out.println("D1: " + d1.getNombre() + " | " + d1.getTipo());
+                System.out.println("D2: " + d2.getNombre() + " | " + d2.getTipo());
 
-                System.out.println("\n-------------------\n");
+                // validacion
+                System.out.println("\n--- Prueba de error ---");
+                d1.setNombre("");
 
-                actuador2.mostrarInformacion();
+                // activar y desactivar
+                System.out.println("\n--- Acciones ---");
+                d1.activar();
+                d2.desactivar();
+
+                // get final
+                System.out.println("\n--- Estado final ---");
+                System.out.println(d1.getNombre() + " activo: " + d1.isActivo());
+                System.out.println(d2.getNombre() + " activo: " + d2.isActivo());
+
+                // static final
+                System.out.println("\nTotal final de dispositivos: " + Dispositivo.getTotalCreados());
         }
 }
